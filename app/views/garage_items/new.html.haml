@@ -1,0 +1,7 @@
+/ = form_for @new_item, url: "/garage_items" do |f|
+/ 	= render "from", f: f
+
+=	form_for @new_garage_item, url: "/garage_items/new" do |f|
+	= render "form", f: f
+
+/garage_items/new = garage_items_path

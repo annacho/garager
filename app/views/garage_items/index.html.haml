@@ -1,0 +1,13 @@
+%h1 These are the garage sale items
+
+%ul 
+- @garage_items.each do |gi|
+	%br
+	%li= "Category: #{gi.category}"
+	%li= "#{gi.headline}"
+	%li= "Price: #{gi.price}"
+	%li= "Condition: #{gi.condition}"
+	%li= "Description: #{gi.description}"
+	%li= "Date: #{gi.submit_date}"
+	%br
+	%hr
