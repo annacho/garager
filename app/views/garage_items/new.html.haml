@@ -1,7 +1,9 @@
-/ = form_for @new_item, url: "/garage_items" do |f|
-/ 	= render "from", f: f
+%link{ :href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :type => "text/css", :rel => "stylesheet" }
 
-=	form_for @new_garage_item, url: "/garage_items/new" do |f|
+%h1 New Garage Item
+
+=	form_for @new_garage_item, url: "/garage_items" do |f|
 	= render "form", f: f
 
-/garage_items/new = garage_items_path
+%br
+= button_to 'Back', garage_items_path, method: "get"

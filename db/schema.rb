@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140421184136) do
+ActiveRecord::Schema.define(version: 20140429105310) do
 
   create_table "garage_items", force: true do |t|
     t.string  "category"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140421184136) do
     t.string  "condition"
     t.string  "description"
     t.date    "submit_date"
+    t.boolean "unsold",      default: true
   end
 
 end

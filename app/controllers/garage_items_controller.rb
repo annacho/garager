@@ -10,9 +10,10 @@ class GarageItemsController < ApplicationController
 
 	def create
 		@new_garage_item = GarageItem.new(garage_item_params)
-
 		if @new_garage_item.save
 			redirect_to garage_items_path
+		else
+			redirect_to new_garage_item_path
 		end
 	end
 
@@ -26,10 +27,38 @@ class GarageItemsController < ApplicationController
 
 	def update
 		@garage_item = GarageItem.find(params[:id])
-		if @item.update_attributes(garage_item_params)
-				redirect_to "/garage_items"
-			end
+		if @garage_item.update_attributes(garage_item_params)
+				redirect_to garage_item_path(@garage_item)
 		end
+	end
+
+	def destroy
+		@garage_item = GarageItem.find(params[:id])
+		if @garage_item.destroy
+			redirect_to garage_items_path
+		else
+			redirect_to garage_item_path(@garage_item)
+		end
+	end
+
+	def change_unsold
+		@garage_item = GarageItem.find(params[:id])
+		if @garage_item.unsold
+			val = true
+		else
+			val = false
+		end
+		@garage_item.update_attributes(:unsold => val)
+		redirect_to garage_items_path
+	end
+
+	# def status
+	# 	if @garage_item.unsold = true
+	# 		puts "Unsold"
+	# 	else
+	# 		puts "Sold"
+	# 	end
+	# end
 
 	private
 

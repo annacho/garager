@@ -1,17 +1,28 @@
-= f.label "Category"
+%link{ :href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :type => "text/css", :rel => "stylesheet" }
+
+= f.label :category
 = f.text_field :category
-
-= f.label "Headline" 
+%br
+= f.label :headline 
 = f.text_field :headline
-
-= f.label "Price"
+%br
+= f.label :price
 = f.text_field :price
-
-= f.label "Condition"
+%br
+= f.label :condition
 = f.text_field :condition
-
-= f.label "Description"
+%br
+= f.label :description
 = f.text_area :description
-
-= f.submit "Add"
+%br
+= f.label "Date"
+= f.date_select :submit_date
+%br
+= f.label "Unsold"
+= f.radio_button :unsold, true
+%br
+= f.label "Sold"
+= f.radio_button :unsold, false
+%br
+= f.submit "Save"
 

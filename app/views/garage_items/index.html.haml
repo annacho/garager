@@ -1,15 +1,35 @@
-%h1 These are the garage sale items
+%link{ :href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :type => "text/css", :rel => "stylesheet" }
 
-%ul 
-- @garage_items.each do |gi|
-	%br
-	%li= "Category: #{gi.category}"
-	%li= "#{gi.headline}"
-	%li= "Price: #{gi.price}"
-	%li= "Condition: #{gi.condition}"
-	%li= "Description: #{gi.description}"
-	%li= "Date: #{gi.submit_date}"
-	%br
-	%hr
+%h1 Garage Sale Items
 
-	
+%table.table.striped
+  %thead
+    %tr
+      %th Category
+      %th Headline
+      %th Price
+      %th Condition
+      %th Description
+      %th Date As Of
+      %th Sold?
+      %th View
+      %th Edit
+      %th Delete 
+  %tbody
+    - @garage_items.each do |g|
+      %tr
+        %td= g.category
+        %td= g.headline
+        %td= number_to_currency(g.price)
+        %td= g.condition
+        %td= g.description
+        %td= g.submit_date
+        %td= g.unsold
+        %td= link_to "View", garage_item_path(g)
+        %td= link_to "Edit", edit_garage_item_path(g)
+        %td= link_to "Delete", garage_item_path(g), method: "delete", :data => { :confirm => 'Are you sure?' }
+%br
+
+= button_to 'Add New Item', new_garage_item_path, method: "get"
+%br
+%br

@@ -1,8 +1,29 @@
-%h3= @garage_item.category
-%h3= @garage_item.headline
-%h3= @garage_item.price 
-%h3= @garage_item.condition 
+%link{ :href => "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :type => "text/css", :rel => "stylesheet" }
 
-%br
-Description:
-= @garage_item.description 
+%p#notice= notice
+
+%p
+  %b Category:
+  = @garage_item.category
+%p
+  %b Headline:
+  = @garage_item.headline
+%p
+  %b Price:
+  = number_to_currency(@garage_item.price)
+%p
+  %b Condition:
+  = @garage_item.condition
+%p
+  %b Description:
+  = @garage_item.description
+%p
+  %b Date As Of:
+  = @garage_item.submit_date
+%p
+  %b Sold?
+  = @garage_item.unsold
+
+= link_to 'Edit', edit_garage_item_path, method: "get"
+\|
+= link_to 'Back', garage_items_path, method: "get"
